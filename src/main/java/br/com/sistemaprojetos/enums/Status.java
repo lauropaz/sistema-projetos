@@ -1,0 +1,9 @@
+package br.com.sistemaprojetos.enums;
+
+
+
+public enum Status {
+	EM_ANALISE, ANALISE_REALIZADA,ANALIZE_APROVADA, INICIADO, PLANEJADO, EM_ANDAMENTO, ENCERRERADO, CANCELADO;
+	
+	
+}
