@@ -30,6 +30,9 @@ public class PessoaService {
 	public List<Pessoa> buscarPessoas(){
 		return repository.findAll();
 	}
+	public Pessoa buscarPessoas(Long id){
+		return repository.findPersonByIdPessoa(id);
+	}
 	public Pessoa buscarPessoasPorNome(String nome){
 		return repository.findByNome(nome);
 	}

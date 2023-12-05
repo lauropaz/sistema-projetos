@@ -23,7 +23,7 @@ public class ProjetoService {
 	
 	@Transactional
 	public HttpStatus incluirProjeto(Projeto projeto) {
-		Pessoa pessoa = pessoaRepository.findPersonById(projeto.getPessoa().getId());
+		Pessoa pessoa = pessoaRepository.findPersonByIdPessoa(projeto.getPessoa().getIdPessoa());
 		projeto.setPessoa(pessoa);
 		if(projeto.getPessoa().isFuncionario()) {
 			repository.save(projeto);
@@ -34,8 +34,6 @@ public class ProjetoService {
 	}
 	@Transactional
 	public HttpStatus alterarProjeto(Projeto projeto) {
-		Pessoa pessoa = pessoaRepository.findPersonById(projeto.getPessoa().getId());
-		projeto.setPessoa(pessoa);
 		if(projeto.getPessoa().isFuncionario()) {
 			repository.save(projeto);
 			return HttpStatus.OK;
@@ -56,7 +54,7 @@ public class ProjetoService {
 		return repository.findAll();
 	}
 	public Projeto buscarProjetosPorId(Long id){
-		return repository.findProjectById(id);
+		return repository.findProjectByIdProjeto(id);
 	}
 	public Projeto buscarProjetosPorNome(String nome){
 		return repository.findByNome(nome);

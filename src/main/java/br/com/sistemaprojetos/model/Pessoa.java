@@ -16,9 +16,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "pessoa")
 public class Pessoa implements Serializable {
@@ -29,9 +33,8 @@ public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@NotNull
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	private Long idPessoa;
 	@Column(length = 100)
 	@Length(max = 100)
 	@NotNull

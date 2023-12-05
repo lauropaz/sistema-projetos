@@ -23,11 +23,13 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name = "projeto")
 @Getter
 @Setter
+@ToString
+@Entity
+@Table(name = "projeto")
 public class Projeto implements Serializable{
 	
 	/**
@@ -36,9 +38,9 @@ public class Projeto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	@NotNull
-	private Long id;
+	private Long idProjeto;
 	@Column(length = 200)
 	@Length(max = 200)
 	private String nome;

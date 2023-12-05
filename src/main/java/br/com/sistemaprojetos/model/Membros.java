@@ -13,25 +13,20 @@ import lombok.Data;
 @Entity
 @Table(name = "membros")
 @Data
-public class Membros implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Membros {
 	
 	@EmbeddedId
 	private MembrosId membrosId;
 	
 	@ManyToOne
     @MapsId("idProjeto")
-    @JoinColumn(name = "idProjeto")
+    @JoinColumn(name = "IDPROJETO")
 	private Projeto projeto;
 	
 	
 	@ManyToOne
     @MapsId("idPessoa")
-    @JoinColumn(name = "idPessoa")
+    @JoinColumn(name = "IDPESSOA")
 	private Pessoa pessoa;
 	
 }

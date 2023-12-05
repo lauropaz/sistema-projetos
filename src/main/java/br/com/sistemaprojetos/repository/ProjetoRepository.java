@@ -8,5 +8,5 @@ import br.com.sistemaprojetos.model.Projeto;
 @Repository
 public interface ProjetoRepository extends JpaRepository<Projeto, Long> {
  Projeto findByNome(String nomeProjeto);
- Projeto findProjectById(Long id);
+ Projeto findProjectByIdProjeto(Long id);
 }
