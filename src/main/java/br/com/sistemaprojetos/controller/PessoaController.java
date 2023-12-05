@@ -22,6 +22,10 @@ public class PessoaController {
 	@Autowired
 	private PessoaService pessoaService;
 	
+	@GetMapping("/")
+	public ResponseEntity<?> buscarPessoas() {
+		return new ResponseEntity<>(pessoaService.buscarPessoas(), HttpStatus.OK);
+	}
 	@GetMapping("/{nome}")
 	public ResponseEntity<?> buscarPessoaPorNome(@PathVariable String nome) {
 		return new ResponseEntity<>(pessoaService.buscarPessoasPorNome(nome), HttpStatus.OK);

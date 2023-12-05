@@ -8,4 +8,5 @@ import br.com.sistemaprojetos.model.Pessoa;
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
  Pessoa findByNome(String nomePessoa);
+ Pessoa findPersonById(Long id);
 }

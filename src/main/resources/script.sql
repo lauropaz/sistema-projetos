@@ -24,7 +24,7 @@ CREATE TABLE projeto (
 	idgerente bigserial NOT NULL, 
 CONSTRAINT pk_projeto PRIMARY KEY (id), 
 CONSTRAINT fk_gerente FOREIGN KEY (idgerente) 
-REFERENCES pessoa (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION);
+REFERENCES pessoa (id) ON UPDATE NO ACTION ON DELETE NO ACTION);
 -- ----------------------------------------------------- 
 -- Table Membros 
 -- ----------------------------------------------------- 
@@ -32,5 +32,5 @@ CREATE TABLE membros (
 	idprojeto bigserial NOT NULL, 
 	idpessoa bigserial NOT NULL, 
 CONSTRAINT pk_projeto_pessoa PRIMARY KEY (idprojeto,idpessoa),
-CONSTRAINT fk_membros_projeto FOREIGN KEY (idprojeto) REFERENCES projeto (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, 
-CONSTRAINT fk_membros_pessoa FOREIGN KEY (idpessoa) REFERENCES pessoa (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION);
+CONSTRAINT fk_membros_projeto FOREIGN KEY (idprojeto) REFERENCES projeto (id) ON UPDATE NO ACTION ON DELETE NO ACTION, 
+CONSTRAINT fk_membros_pessoa FOREIGN KEY (idpessoa) REFERENCES pessoa (id) ON UPDATE NO ACTION ON DELETE NO ACTION);

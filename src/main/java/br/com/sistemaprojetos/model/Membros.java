@@ -22,6 +22,7 @@ public class Membros implements Serializable{
 	
 	@EmbeddedId
 	private MembrosId membrosId;
+	
 	@ManyToOne
     @MapsId("idProjeto")
     @JoinColumn(name = "idProjeto")

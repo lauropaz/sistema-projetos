@@ -7,6 +7,8 @@ import java.util.Set;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.sistemaprojetos.enums.Risco;
 import br.com.sistemaprojetos.enums.Status;
 import jakarta.persistence.Column;
@@ -37,12 +39,13 @@ public class Projeto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull
 	private Long id;
-	@Column
+	@Column(length = 200)
 	@Length(max = 200)
 	private String nome;
 	@Column
 	private LocalDateTime dataInicio;
 	@OneToMany(mappedBy = "projeto")
+	@JsonIgnore
 	Set<Membros> membros;
 	@Column
 	private LocalDateTime dataTermino;
@@ -50,14 +53,12 @@ public class Projeto implements Serializable{
 	private LocalDateTime dataRealTermino;
 	@Column
 	private BigDecimal orcamentoTotal;
-	@Column
+	@Column(length = 5000)
 	@Length(max = 5000)
 	private String descricao;
-	@Column
-	@Length(max = 45)
+	@Column(length = 45)
 	private Status status;
-	@Column
-	@Length(max = 45)
+	@Column(length = 45)
 	private Risco risco;
 	@ManyToOne
     @JoinColumn(name = "fk_gerente")

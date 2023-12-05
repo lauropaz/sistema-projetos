@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,17 +32,18 @@ public class Pessoa implements Serializable {
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column
+	@Column(length = 100)
 	@Length(max = 100)
 	@NotNull
 	private String nome;
 	@Column
 	private LocalDateTime dataNascimento;
-	@Column
+	@Column(length = 14)
 	@Length(max = 14)
 	private String cpf;
 	@Column
 	private boolean isFuncionario;
 	@OneToMany(mappedBy = "pessoa")
+	@JsonIgnore
 	Set<Membros> membros;
 }

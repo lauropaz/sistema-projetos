@@ -23,8 +23,8 @@ public class ProjetoController {
 	private ProjetoService projetoService;
 	
 	@GetMapping("/")
-	public ResponseEntity<?> testeScope() {
-		return ResponseEntity.ok("Chegou Aqui");
+	public ResponseEntity<?> buscarProjetos() {
+		return new ResponseEntity<>(projetoService.buscarProjetos(), HttpStatus.OK);
 	}
 	@GetMapping("/{nome}")
 	public ResponseEntity<?> buscarProjetoPorNome(@PathVariable String nome) {
@@ -32,15 +32,14 @@ public class ProjetoController {
 	}
 	@PostMapping
 	public ResponseEntity<?> inserirProjeto(@RequestBody Projeto projeto) {
-		return new ResponseEntity<>(projetoService.incluirProjeto(projeto), HttpStatus.OK);
+		return new ResponseEntity<>(projetoService.incluirProjeto(projeto).getReasonPhrase(), HttpStatus.valueOf(projetoService.incluirProjeto(projeto).value()) );
 	}
 	@PutMapping
 	public ResponseEntity<?> alterarProjeto(@RequestBody Projeto projeto) {
-		return new ResponseEntity<>(projetoService.alterarProjeto(projeto), HttpStatus.OK);
+		return new ResponseEntity<>(projetoService.alterarProjeto(projeto).getReasonPhrase(), HttpStatus.valueOf(projetoService.incluirProjeto(projeto).value()) );
 	}
 	@DeleteMapping
 	public ResponseEntity<?> deletarProjeto(@RequestBody Projeto projeto) {
-		Integer statusCode = projetoService.excluirProjeto(projeto).value();
-		return new ResponseEntity<>(projetoService.excluirProjeto(projeto).getReasonPhrase(), HttpStatus.valueOf(statusCode));
+		return new ResponseEntity<>(projetoService.excluirProjeto(projeto).getReasonPhrase(), HttpStatus.valueOf(projetoService.excluirProjeto(projeto).value()));
 	}
 }
